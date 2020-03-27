@@ -14,11 +14,13 @@ FFMPEG_INPUT_FILE_PREFIX = [
   "-i"
 ]
 FFMPEG_CONVERSION_PARAMETERS = {
-  "-vf": "scale=-1:720",
+  "-map": "0",
+  "-filter:V:0": "scale=-1:720",
+  "-c:V:0": "libx264",
   "-preset": "veryfast",
   "-crf": "23",
   "-c:a": "ac3",
-  "-c:s": "dvdsub"
+  "-c:s": "copy"
 }
 
 LOGGER_NAME = "mkv-to-mkv-ffmpeg-compressor"
