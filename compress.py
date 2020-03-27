@@ -80,5 +80,5 @@ def handle_path(path, path_relative_to_original_path, files_to_compress):
         handle_path(full_path, os.path.join(path_relative_to_original_path, path_item), files_to_compress)
 
 def handle_files_to_be_compressed(files_to_compress):
-  for source, destination in sorted(files_to_compress):
+  for source, destination in sorted(files_to_compress.items()):
     compress_file(source, destination)
