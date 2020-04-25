@@ -23,6 +23,9 @@ FFMPEG_CONVERSION_PARAMETERS = {
   "-c:s": "copy"
 }
 
+def FFMPEG_NOT_ALLOWED_STDERR_CONTENT(content):
+  return "error" in content.lower()
+
 LOGGER_NAME = "mkv-to-mkv-ffmpeg-compressor"
 LOG_FORMAT = "[%(asctime)-15s: %(levelname)s/%(funcName)s] %(message)s"
 LOG_FORMATTER = logging.Formatter(LOG_FORMAT)

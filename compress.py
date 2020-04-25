@@ -46,7 +46,10 @@ def compress_file(source_file, destination_file):
   if stdout:
     configuration.LOGGER.info(stdout)
   if stderr:
-    configuration.LOGGER.error(stderr)
+    if result.returncode != 0 or configuration.FFMPEG_NOT_ALLOWED_STDERR_CONTENT(stderr) is True:
+      configuration.LOGGER.error(stderr)
+    else:
+      configuration.LOGGER.info(stderr)
 
   if result.returncode == 0:
     configuration.LOGGER.info(f"Successfully compressed file {source_file} to file {destination_file}")
