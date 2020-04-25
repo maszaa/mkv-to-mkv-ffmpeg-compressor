@@ -48,4 +48,12 @@ except ModuleNotFoundError:
   pass
 
 FFMPEG_CONVERSION_PARAMETERS_LIST = []
-[FFMPEG_CONVERSION_PARAMETERS_LIST.extend(item) for item in FFMPEG_CONVERSION_PARAMETERS.items()]
+
+for key, value in FFMPEG_CONVERSION_PARAMETERS.items():
+  item = [key, value]
+
+  if isinstance(value, list):
+    item = []
+    [item.extend([key, v]) for v in value]
+
+  FFMPEG_CONVERSION_PARAMETERS_LIST.extend(item)
